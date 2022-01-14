@@ -1,7 +1,7 @@
 import express from 'express';
+import { getTask } from '../controllers/task';
 import { createUser, getUserById, deleteUserById, updateUserById } from '../controllers/user';
 //import userSchema from '../validations'
-import { createTask }   from "../controllers/task";
 
 const userRouter = express.Router();
 
@@ -9,12 +9,13 @@ userRouter.post('/post',  createUser);
 
 userRouter.post('/',  createUser);
 
-userRouter.get('/:userId',  getUserById);
+userRouter.get('/user/:userId',  getUserById);
 
 userRouter.patch('/:userId',  updateUserById);
 
 userRouter.delete('/:userId', deleteUserById)
 
-userRouter.post('/create',  createTask);
+userRouter.get('/test/:userId', getTask)
+
 
 export default userRouter;

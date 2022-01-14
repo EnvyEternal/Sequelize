@@ -1,4 +1,5 @@
 import { User } from './../db/models';
+import { Task } from  './../db/models/task';
 
 export async function createUser(req, res) {
   try {

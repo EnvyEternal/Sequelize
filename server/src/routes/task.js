@@ -1,10 +1,13 @@
 import express from 'express';
-import { createTask, getTask }   from "../controllers/task";
+import { createTask, deleteTask, getTask }   from "../controllers/task";
+import task from '../db/models/task';
 
 const taskRouter = express.Router();
 
 taskRouter.post('/create',  createTask);
 
-taskRouter.get('/gettask/:taskId', getTask)
+taskRouter.get('/:userId', getTask)
+
+taskRouter.get('/delete/:userId', deleteTask)
 
 export default taskRouter;
