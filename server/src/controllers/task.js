@@ -1,4 +1,4 @@
-import { Task } from  './../db/models/task';
+import {Task} from  './../db/models';
 
 export async function createTask(req, res) {
   try {
@@ -13,12 +13,16 @@ export async function createTask(req, res) {
 
 export async function getTask(req, res) {
   try {
-    const gettask = await Task.findByPk(req.params.userId);
+    const gettask = await Task.findByPk(req.params.userId, {
+      attributes:{
+        include:['value']
+      } 
+    });
     if (gettask) {
       return res.status(201).send(gettask);
     }
   } catch (e) {
-    console.log('Error Task');
+    console.log('Error Task', e);
   }
 }
 
